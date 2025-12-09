@@ -12,8 +12,10 @@ WHITE = (255, 255, 255)
 M_RED = (247, 57, 16)    # hat/shirt [web:29]
 M_DARK_RED = (174, 57, 30)    # outline/shadow [web:29]
 M_SKIN = (255, 203, 164)  # skin tone [web:29]
-M_BROWN = (174, 57, 30)    # hair/boots [web:29]
+M_BROWN = (150, 75, 0)    # hair [web:29]
 M_BLUE = (14, 118, 176)   # overalls [web:29]
+M_GRAY = (44, 44, 44)   # mustache/shoes [web:29]
+M_GOLD = (255, 223, 0)    # buttons [web:29]
 
 # Peach-ish
 P_SKIN = (245, 226, 184)  # face/arms [web:38]
@@ -28,13 +30,22 @@ grid = [[BLACK for _ in range(cols)] for _ in range(rows)]
 # Example mini-Mario (8x8) at (row 2..9, col 2..9)
 mario_pattern = [
 
-    "..RRRRR..",
-    ".RRRRRRRRR.",
-    ".BBBSS.S..",
-    ".BBBBB..",
-    ".BMMMB..",
-    "..BMB...",
-    "..B.B...",
+    "......RRRRR.....",
+    ".....RRRRRRRRR..",
+    "....MMMSSGS.....",
+    "...MSMSSSGSSS...",
+    "...MSMMSSSGSSS..",
+    "...MMSSSSGGGG...",
+    ".....SSSSSSS....",
+    "....RRBRRRR.....",
+    "...RRRBRRBRRR...",
+    "..RRRRBBBBRRRR..",
+    "....RBOBBOBR....",
+    ".....BBBBBB.....",
+    "....BBBBBBBB....",
+    "....BBB..BBB....",
+    "...GGG....GGG...",
+    "..GGGG....GGGG..",
 ]
 
 char_map = {
@@ -43,9 +54,11 @@ char_map = {
     "S": M_SKIN,
     "B": M_BLUE,
     "M": M_BROWN,
+    "G": M_GRAY,
+    "O": M_GOLD,
 }
 
-start_row, start_col = 2, 2
+start_row, start_col = 0, 0
 for r, row_str in enumerate(mario_pattern):
     for c, ch in enumerate(row_str):
         grid[start_row + r][start_col + c] = char_map[ch]
