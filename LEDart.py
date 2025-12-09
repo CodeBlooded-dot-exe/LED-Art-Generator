@@ -10,7 +10,6 @@ WHITE = (255, 255, 255)
 
 # Mario-ish
 M_RED = (247, 57, 16)    # hat/shirt [web:29]
-M_DARK_RED = (174, 57, 30)    # outline/shadow [web:29]
 M_SKIN = (255, 203, 164)  # skin tone [web:29]
 M_BROWN = (150, 75, 0)    # hair [web:29]
 M_BLUE = (14, 118, 176)   # overalls [web:29]
@@ -22,30 +21,32 @@ P_SKIN = (245, 226, 184)  # face/arms [web:38]
 P_PINK = (246, 177, 208)  # dress light [web:30]
 P_PINK_D = (246, 98, 153)   # dress dark [web:38]
 P_HAIR = (253, 223, 141)  # hair [web:38]
-P_GEM_BLUE = (14, 118, 176)   # jewel [web:28]
+P_GEM_BLUE = (14, 118, 176)   # tiara jewel [web:28]
+P_GOLD = (255, 223, 0)    # tiara [web:29]
+P_DARK_RED = (174, 57, 30)    # tiara jewel [web:29]
 
 # Start with all black pixels
 grid = [[BLACK for _ in range(cols)] for _ in range(rows)]
 
-# Example mini-Mario (8x8) at (row 2..9, col 2..9)
+# Example mini-Mario (16x16) at (row 2..9, col 2..9)
 mario_pattern = [
 
-    "......RRRRR.....",
-    ".....RRRRRRRRR..",
-    "....MMMSSGS.....",
-    "...MSMSSSGSSS...",
-    "...MSMMSSSGSSS..",
-    "...MMSSSSGGGG...",
-    ".....SSSSSSS....",
-    "....RRBRRRR.....",
-    "...RRRBRRBRRR...",
-    "..RRRRBBBBRRRR..",
-    "....RBOBBOBR....",
-    ".....BBBBBB.....",
-    "....BBBBBBBB....",
-    "....BBB..BBB....",
-    "...GGG....GGG...",
-    "..GGGG....GGGG..",
+    ".....RRRRR.....",
+    "....RRRRRRRRR..",
+    "...MMMSSGS.....",
+    "..MSMSSSGSSS...",
+    "..MSMMSSSGSSS..",
+    "..MMSSSSGGGG...",
+    "....SSSSSSS....",
+    "...RRBRRRR.....",
+    "..RRRBRRBRRR...",
+    ".RRRRBBBBRRRR..",
+    "...RBOBBOBR....",
+    "....BBBBBB.....",
+    "...BBBBBBBB....",
+    "...BBB..BBB....",
+    "..GGG....GGG...",
+    ".GGGG....GGGG..",
 ]
 
 char_map = {
@@ -63,16 +64,24 @@ for r, row_str in enumerate(mario_pattern):
     for c, ch in enumerate(row_str):
         grid[start_row + r][start_col + c] = char_map[ch]
 
-# Example mini-Peach (8x8) at (row 2..9, col 22..29)
+# Example mini-Peach (16x16) at (row 2..9, col 22..29)
 peach_pattern = [
-    "........",
-    "..HHHH..",
-    ".HSSSH..",
-    ".SPPPS..",
-    ".SPPPS..",
-    ".SPPPS..",
-    "..P.P...",
-    "..P.P...",
+    "......OO.O.OO...",
+    "......GOOROOG...",
+    ".....HHHHHHHHH..",
+    "....HHSGSHHHHHH.",
+    ".....SSGSHSHHHH.",
+    ".....SSSSHGHH...",
+    "......SSSSHHHH..",
+    ".....PGODDDHHHHH",
+    "....PPPPPPPPHH..",
+    "....SPPPPPSSH...",
+    ".....DDDDDD.....",
+    "....DDPPDDDD....",
+    "....DPPPPPDDD...",
+    "....PPPPPPPPP...",
+    "...PPPPPPPPPPP..",
+    "..DDDDDDDDDDDDD.",
 ]
 
 peach_map = {
@@ -80,9 +89,13 @@ peach_map = {
     "H": P_HAIR,
     "S": P_SKIN,
     "P": P_PINK,
+    "D": P_PINK_D,
+    "G": P_GEM_BLUE,
+    "O": P_GOLD,
+    "R": P_DARK_RED,
 }
 
-start_row, start_col = 2, 22
+start_row, start_col = 0, 16
 for r, row_str in enumerate(peach_pattern):
     for c, ch in enumerate(row_str):
         grid[start_row + r][start_col + c] = peach_map[ch]
