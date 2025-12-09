@@ -27,10 +27,10 @@ grid = [[BLACK for _ in range(cols)] for _ in range(rows)]
 
 # Example mini-Mario (8x8) at (row 2..9, col 2..9)
 mario_pattern = [
-    "........",
-    "..RRRR..",
-    ".RSSSR..",
-    ".RSSSR..",
+
+    "..RRRRR..",
+    ".RRRRRRRRR.",
+    ".BBBSS.S..",
     ".BBBBB..",
     ".BMMMB..",
     "..BMB...",
